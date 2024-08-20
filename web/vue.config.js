@@ -31,6 +31,8 @@ module.exports = {
   // assetsDir: '/',
   lintOnSave: process.env.NODE_ENV === 'development',
   productionSourceMap: false,
+  transpileDependencies: [
+  ],
   devServer: {
     port: port,
     open: false,

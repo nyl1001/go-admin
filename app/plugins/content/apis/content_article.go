@@ -1,7 +1,6 @@
 package apis
 
 import (
-	"github.com/gin-gonic/gin"
 	adminService "go-admin/app/admin/service"
 	"go-admin/app/plugins/content/service"
 	"go-admin/app/plugins/content/service/dto"
@@ -12,6 +11,8 @@ import (
 	"go-admin/core/middleware/auth"
 	"go-admin/core/utils/dateutils"
 	"time"
+
+	"github.com/gin-gonic/gin"
 )
 
 type ContentArticle struct {
@@ -20,8 +21,7 @@ type ContentArticle struct {
 
 // GetPage
 // @Description: 获取文章管理列表
-// @receiver e
-// @param c
+
 func (e ContentArticle) GetPage(c *gin.Context) {
 	req := dto.ContentArticleQueryReq{}
 	s := service.ContentArticle{}
@@ -45,8 +45,7 @@ func (e ContentArticle) GetPage(c *gin.Context) {
 
 // Get
 // @Description: 获取文章管理
-// @receiver e
-// @param c
+
 func (e ContentArticle) Get(c *gin.Context) {
 	req := dto.ContentArticleGetReq{}
 	s := service.ContentArticle{}
@@ -70,8 +69,7 @@ func (e ContentArticle) Get(c *gin.Context) {
 
 // Insert
 // @Description: 创建文章管理
-// @receiver e
-// @param c
+
 func (e ContentArticle) Insert(c *gin.Context) {
 	req := dto.ContentArticleInsertReq{}
 	s := service.ContentArticle{}
@@ -100,8 +98,7 @@ func (e ContentArticle) Insert(c *gin.Context) {
 
 // Update
 // @Description: 修改文章管理
-// @receiver e
-// @param c
+
 func (e ContentArticle) Update(c *gin.Context) {
 	req := dto.ContentArticleUpdateReq{}
 	s := service.ContentArticle{}
@@ -135,8 +132,7 @@ func (e ContentArticle) Update(c *gin.Context) {
 
 // Delete
 // @Description:文章管理
-// @receiver e
-// @param c
+
 func (e ContentArticle) Delete(c *gin.Context) {
 	s := service.ContentArticle{}
 	req := dto.ContentArticleDeleteReq{}
@@ -161,8 +157,7 @@ func (e ContentArticle) Delete(c *gin.Context) {
 
 // Export
 // @Description: 导出文章管理
-// @receiver e
-// @param c
+
 func (e ContentArticle) Export(c *gin.Context) {
 	req := dto.ContentArticleQueryReq{}
 	s := service.ContentArticle{}

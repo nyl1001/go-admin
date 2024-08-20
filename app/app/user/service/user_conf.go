@@ -12,8 +12,9 @@ import (
 	"go-admin/core/middleware"
 	"go-admin/core/utils/encrypt"
 	"go-admin/core/utils/strutils"
-	"gorm.io/gorm"
 	"time"
+
+	"gorm.io/gorm"
 )
 
 type UserConf struct {
@@ -22,7 +23,6 @@ type UserConf struct {
 
 // NewUserConfService
 // @Description: 实例化UserConf
-// @param s
 // @return *UserConf
 func NewUserConfService(s *service.Service) *UserConf {
 	var srv = new(UserConf)
@@ -33,9 +33,7 @@ func NewUserConfService(s *service.Service) *UserConf {
 
 // GetPage
 // @Description: 获取UserConf列表
-// @receiver e
-// @param c
-// @param p
+
 // @return []models.UserConf
 // @return int64
 // @return int
@@ -97,8 +95,6 @@ func (e *UserConf) GetPage(c *dto.UserConfQueryReq, p *middleware.DataPermission
 // Get
 // @Description: 获取UserConf对象
 // @receiver e
-// @param id 编号
-// @param p
 // @return *models.UserConf
 // @return int
 // @return error
@@ -122,7 +118,6 @@ func (e *UserConf) Get(id int64, p *middleware.DataPermission) (*models.UserConf
 // QueryOne
 // @Description: 通过自定义条件获取UserConf一条记录
 // @receiver e
-// @param queryCondition 条件
 // @return *models.UserConf
 // @return error
 func (e *UserConf) QueryOne(queryCondition *dto.UserConfQueryReq, p *middleware.DataPermission) (*models.UserConf, int, error) {
@@ -144,7 +139,6 @@ func (e *UserConf) QueryOne(queryCondition *dto.UserConfQueryReq, p *middleware.
 //
 //	@Description: 获取条数
 //	@receiver e
-//	@param c
 //	@return int64
 //	@return int
 //	@return error
@@ -166,8 +160,7 @@ func (e *UserConf) Count(queryCondition *dto.UserConfQueryReq) (int64, int, erro
 
 // Insert
 // @Description: 创建UserConf对象
-// @receiver e
-// @param c
+
 // @return int64 插入数据的主键
 // @return int
 // @return error
@@ -193,9 +186,7 @@ func (e *UserConf) Insert(c *dto.UserConfInsertReq) (int64, int, error) {
 
 // Update
 // @Description: 修改UserConf对象
-// @receiver e
-// @param c
-// @param p
+
 // @return bool 是否有数据更新
 // @return error
 func (e *UserConf) Update(c *dto.UserConfUpdateReq, p *middleware.DataPermission) (bool, int, error) {

@@ -3,7 +3,6 @@ package service
 import (
 	"errors"
 	"fmt"
-	"github.com/xuri/excelize/v2"
 	adminService "go-admin/app/admin/service"
 	"go-admin/app/plugins/filemgr/constant"
 	fLang "go-admin/app/plugins/filemgr/lang"
@@ -20,8 +19,11 @@ import (
 	"mime/multipart"
 	"path"
 
-	"gorm.io/gorm"
+	"github.com/xuri/excelize/v2"
+
 	"time"
+
+	"gorm.io/gorm"
 )
 
 type FilemgrApp struct {
@@ -30,7 +32,6 @@ type FilemgrApp struct {
 
 // NewFilemgrAppService
 // @Description: 实例化FilemgrApp
-// @param s
 // @return *FilemgrApp
 func NewFilemgrAppService(s *service.Service) *FilemgrApp {
 	var srv = new(FilemgrApp)
@@ -41,9 +42,7 @@ func NewFilemgrAppService(s *service.Service) *FilemgrApp {
 
 // GetPage
 // @Description: 获取FilemgrApp列表
-// @receiver e
-// @param c
-// @param p
+
 // @return []models.FilemgrApp
 // @return int64
 // @return int
@@ -79,8 +78,6 @@ func (e *FilemgrApp) GetPage(c *dto.FilemgrAppQueryReq, p *middleware.DataPermis
 // Get
 // @Description: 获取FilemgrApp对象
 // @receiver e
-// @param id 编号
-// @param p
 // @return *models.FilemgrApp
 // @return int
 // @return error
@@ -104,7 +101,6 @@ func (e *FilemgrApp) Get(id int64, p *middleware.DataPermission) (*models.Filemg
 // QueryOne
 // @Description: 通过自定义条件获取FilemgrApp一条记录
 // @receiver e
-// @param queryCondition 条件
 // @return *models.FilemgrApp
 // @return error
 func (e *FilemgrApp) QueryOne(queryCondition *dto.FilemgrAppQueryReq, p *middleware.DataPermission) (*models.FilemgrApp, int, error) {
@@ -126,7 +122,6 @@ func (e *FilemgrApp) QueryOne(queryCondition *dto.FilemgrAppQueryReq, p *middlew
 //
 //	@Description: 获取条数
 //	@receiver e
-//	@param c
 //	@return int64
 //	@return int
 //	@return error
@@ -148,8 +143,7 @@ func (e *FilemgrApp) Count(queryCondition *dto.FilemgrAppQueryReq) (int64, int, 
 
 // Insert
 // @Description: 创建FilemgrApp对象
-// @receiver e
-// @param c
+
 // @return int64 插入数据的主键
 // @return int
 // @return error
@@ -229,9 +223,7 @@ func (e *FilemgrApp) Insert(c *dto.FilemgrAppInsertReq) (int64, int, error) {
 
 // Update
 // @Description: 修改FilemgrApp对象
-// @receiver e
-// @param c
-// @param p
+
 // @return bool 是否有数据更新
 // @return error
 func (e *FilemgrApp) Update(c *dto.FilemgrAppUpdateReq, p *middleware.DataPermission) (bool, int, error) {
@@ -263,8 +255,6 @@ func (e *FilemgrApp) Update(c *dto.FilemgrAppUpdateReq, p *middleware.DataPermis
 // Remove
 // @Description: 删除FilemgrApp
 // @receiver e
-// @param ids
-// @param p
 // @return int
 // @return error
 func (e *FilemgrApp) Remove(ids []int64, p *middleware.DataPermission) (int, error) {
@@ -310,9 +300,6 @@ func (e *FilemgrApp) Remove(ids []int64, p *middleware.DataPermission) (int, err
 //
 //	@Description: 获取单个上传文件信息
 //	@receiver e
-//	@param form
-//	@param file
-//	@param dst
 //	@return int
 //	@return error
 func (e *FilemgrApp) GetSingleUploadFileInfo(form *multipart.Form, file *multipart.FileHeader, dst *string) (int, error) {
@@ -335,7 +322,6 @@ func (e *FilemgrApp) GetSingleUploadFileInfo(form *multipart.Form, file *multipa
 // GetExcel
 // @Description: GetExcel 导出FilemgrApp excel数据
 // @receiver e
-// @param list
 // @return []byte
 // @return int
 // @return error
@@ -367,10 +353,6 @@ func (e *FilemgrApp) GetExcel(list []models.FilemgrApp) ([]byte, error) {
 // uploadOssFile
 // @Description:
 // @receiver e
-// @param appType
-// @param version
-// @param platform
-// @param localAddress
 // @return error
 func (e *FilemgrApp) uploadOssFile(appType, version, platform, localAddress string) error {
 	app := models.FilemgrApp{}
@@ -396,7 +378,6 @@ func (e *FilemgrApp) uploadOssFile(appType, version, platform, localAddress stri
 // generateAppOssUrl
 // @Description: 获取app下载链接
 // @receiver e
-// @param App
 // @return string
 // @return error
 func (e *FilemgrApp) generateAppOssUrl(App *models.FilemgrApp) (string, error) {
@@ -414,7 +395,6 @@ func (e *FilemgrApp) generateAppOssUrl(App *models.FilemgrApp) (string, error) {
 // getOssClient
 // @Description: 获取oss客户端
 // @receiver e
-// @param App
 // @return *ossutils.ALiYunOSS
 // @return error
 func (e *FilemgrApp) getOssClient() (*ossutils.ALiYunOSS, error) {
@@ -437,7 +417,6 @@ func (e *FilemgrApp) getOssClient() (*ossutils.ALiYunOSS, error) {
 // generateAppOssObjectKey
 // @Description: 生成oss key
 // @receiver e
-// @param App
 // @return string
 // @return error
 func (e *FilemgrApp) generateAppOssObjectKey(App *models.FilemgrApp) (string, error) {

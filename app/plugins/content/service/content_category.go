@@ -2,7 +2,6 @@ package service
 
 import (
 	"fmt"
-	"github.com/xuri/excelize/v2"
 	sysLang "go-admin/app/admin/lang"
 	cLang "go-admin/app/plugins/content/lang"
 	"go-admin/app/plugins/content/models"
@@ -14,8 +13,11 @@ import (
 	"go-admin/core/middleware"
 	"go-admin/core/utils/dateutils"
 
-	"gorm.io/gorm"
+	"github.com/xuri/excelize/v2"
+
 	"time"
+
+	"gorm.io/gorm"
 )
 
 type ContentCategory struct {
@@ -24,7 +26,6 @@ type ContentCategory struct {
 
 // NewContentCategoryService
 // @Description: 实例化ContentCategory
-// @param s
 // @return *ContentCategory
 func NewContentCategoryService(s *service.Service) *ContentCategory {
 	var srv = new(ContentCategory)
@@ -35,9 +36,7 @@ func NewContentCategoryService(s *service.Service) *ContentCategory {
 
 // GetPage
 // @Description: 获取ContentCategory列表
-// @receiver e
-// @param c
-// @param p
+
 // @return []models.ContentCategory
 // @return int64
 // @return int
@@ -62,8 +61,6 @@ func (e *ContentCategory) GetPage(c *dto.ContentCategoryQueryReq, p *middleware.
 // Get
 // @Description: 获取ContentCategory对象
 // @receiver e
-// @param id 编号
-// @param p
 // @return *models.ContentCategory
 // @return int
 // @return error
@@ -87,7 +84,6 @@ func (e *ContentCategory) Get(id int64, p *middleware.DataPermission) (*models.C
 // QueryOne
 // @Description: 通过自定义条件获取ContentCategory一条记录
 // @receiver e
-// @param queryCondition 条件
 // @return *models.ContentCategory
 // @return error
 func (e *ContentCategory) QueryOne(queryCondition *dto.ContentCategoryQueryReq, p *middleware.DataPermission) (*models.ContentCategory, int, error) {
@@ -109,7 +105,6 @@ func (e *ContentCategory) QueryOne(queryCondition *dto.ContentCategoryQueryReq, 
 //
 //	@Description: 获取条数
 //	@receiver e
-//	@param c
 //	@return int64
 //	@return int
 //	@return error
@@ -131,8 +126,7 @@ func (e *ContentCategory) Count(queryCondition *dto.ContentCategoryQueryReq) (in
 
 // Insert
 // @Description: 创建ContentCategory对象
-// @receiver e
-// @param c
+
 // @return int64 插入数据的主键
 // @return int
 // @return error
@@ -170,9 +164,7 @@ func (e *ContentCategory) Insert(c *dto.ContentCategoryInsertReq) (int64, int, e
 
 // Update
 // @Description: 修改ContentCategory对象
-// @receiver e
-// @param c
-// @param p
+
 // @return bool 是否有数据更新
 // @return error
 func (e *ContentCategory) Update(c *dto.ContentCategoryUpdateReq, p *middleware.DataPermission) (bool, int, error) {
@@ -218,8 +210,6 @@ func (e *ContentCategory) Update(c *dto.ContentCategoryUpdateReq, p *middleware.
 // Remove
 // @Description: 删除ContentCategory
 // @receiver e
-// @param ids
-// @param p
 // @return int
 // @return error
 func (e *ContentCategory) Remove(ids []int64, p *middleware.DataPermission) (int, error) {
@@ -250,7 +240,6 @@ func (e *ContentCategory) Remove(ids []int64, p *middleware.DataPermission) (int
 // GetExcel
 // @Description: GetExcel 导出ContentCategory excel数据
 // @receiver e
-// @param list
 // @return []byte
 // @return int
 // @return error

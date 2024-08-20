@@ -3,7 +3,6 @@ package api
 import (
 	"context"
 	"fmt"
-	"github.com/bitxx/load-config/source/file"
 	"go-admin/app"
 	"go-admin/core/config"
 	"go-admin/core/lang"
@@ -20,11 +19,18 @@ import (
 	"os/signal"
 	"time"
 
-	"github.com/gin-gonic/gin"
-	"github.com/spf13/cobra"
+	"github.com/bitxx/load-config/source/file"
+
 	"go-admin/app/admin/models"
 	"go-admin/core/global"
 	"go-admin/core/middleware"
+
+	_ "go-admin/docs"
+
+	"github.com/gin-gonic/gin"
+	"github.com/spf13/cobra"
+	swaggerFiles "github.com/swaggo/files"
+	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
 var (
@@ -163,7 +169,7 @@ func initRouter() {
 	r.Use(middleware.Sentinel()).
 		Use(middleware.RequestId()).
 		Use(log.SetRequestLogger)
-
+	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	middleware.InitMiddleware(r)
 
 }

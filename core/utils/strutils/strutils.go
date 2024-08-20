@@ -7,11 +7,8 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/gin-gonic/gin"
-	"github.com/shopspring/decimal"
 	"go-admin/core/global"
 	"go-admin/core/utils/idgen"
-	"golang.org/x/crypto/bcrypt"
 	"io/ioutil"
 	"math"
 	"math/rand"
@@ -20,13 +17,15 @@ import (
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/gin-gonic/gin"
+	"github.com/shopspring/decimal"
+	"golang.org/x/crypto/bcrypt"
 )
 
 // HidePartStr
 /**
  * @Description: 字符串中间替换为*
- * @param value
- * @param n
  * @return string
  */
 func HidePartStr(value string, n int) string {
@@ -65,7 +64,6 @@ func GenerateValidateCode() string {
 
 // VerifyEmailFormat
 // @Description: 检测邮箱格式
-// @param email
 // @return bool
 func VerifyEmailFormat(email string) bool {
 	if email == "" {
@@ -88,7 +86,6 @@ func IsEmail(email string) bool {
 
 // VersionOrdinal
 // @Description:
-// @param version
 // @return string
 // @return error
 func VersionOrdinal(version string) (string, error) {

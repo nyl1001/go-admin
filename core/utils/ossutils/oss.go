@@ -3,9 +3,10 @@ package ossutils
 import (
 	"errors"
 	"fmt"
-	"github.com/aliyun/aliyun-oss-go-sdk/oss"
 	"os"
 	"time"
+
+	"github.com/aliyun/aliyun-oss-go-sdk/oss"
 )
 
 type ALiYunOSS struct {
@@ -40,7 +41,6 @@ func (e *ALiYunOSS) InitOssClient(key, secret, endpoint, bucketName string) erro
 // GeneratePresignedUrl
 // @Description: 获取下载链接
 // @receiver e
-// @param key
 // @return string
 // @return error
 func (e *ALiYunOSS) GeneratePresignedUrl(key string) (string, error) {
@@ -57,8 +57,6 @@ func (e *ALiYunOSS) GeneratePresignedUrl(key string) (string, error) {
 // Upload
 // @Description: 上传文件
 // @receiver e
-// @param objectKey
-// @param localPath
 // @return error
 func (e *ALiYunOSS) Upload(objectKey, localPath string) error {
 	// 上传本地文件
@@ -68,8 +66,6 @@ func (e *ALiYunOSS) Upload(objectKey, localPath string) error {
 // UploadWithSpace
 // @Description: 分片上传
 // @receiver e
-// @param objectKey
-// @param localPath
 // @return error
 func (e *ALiYunOSS) UploadWithSpace(objectKey, localPath string) error {
 	// 上传本地文件

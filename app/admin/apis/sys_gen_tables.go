@@ -1,8 +1,6 @@
 package apis
 
 import (
-	"github.com/gin-gonic/gin"
-	"github.com/gin-gonic/gin/binding"
 	"go-admin/app/admin/service"
 	"go-admin/app/admin/service/dto"
 	"go-admin/core/dto/api"
@@ -11,6 +9,9 @@ import (
 	"go-admin/core/lang"
 	"go-admin/core/middleware"
 	"go-admin/core/middleware/auth"
+
+	"github.com/gin-gonic/gin"
+	"github.com/gin-gonic/gin/binding"
 )
 
 type SysTables struct {
@@ -95,7 +96,7 @@ func (e SysTables) Insert(c *gin.Context) {
 // @Tags 工具 / 生成工具
 // @Accept  application/json
 // @Product application/json
-// @Param data body tools.SysGenTable true "body"
+// @Param data body dto.SysGenTableUpdateReq true "body"
 // @Success 200 {string} string	"{"code": 200, "message": "添加成功"}"
 // @Success 200 {string} string	"{"code": -1, "message": "添加失败"}"
 // @Router /admin-api/v1/sys/tables/info [put]

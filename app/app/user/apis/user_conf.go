@@ -1,7 +1,6 @@
 package apis
 
 import (
-	"github.com/gin-gonic/gin"
 	"go-admin/app/app/user/service"
 	"go-admin/app/app/user/service/dto"
 	"go-admin/core/dto/api"
@@ -9,6 +8,8 @@ import (
 	"go-admin/core/lang"
 	"go-admin/core/middleware"
 	"go-admin/core/middleware/auth"
+
+	"github.com/gin-gonic/gin"
 )
 
 type UserConf struct {
@@ -17,8 +18,7 @@ type UserConf struct {
 
 // GetPage
 // @Description: 获取用户配置列表
-// @receiver e
-// @param c
+
 func (e UserConf) GetPage(c *gin.Context) {
 	req := dto.UserConfQueryReq{}
 	s := service.UserConf{}
@@ -43,8 +43,7 @@ func (e UserConf) GetPage(c *gin.Context) {
 
 // Get
 // @Description: 获取用户配置
-// @receiver e
-// @param c
+
 func (e UserConf) Get(c *gin.Context) {
 	req := dto.UserConfGetReq{}
 	s := service.UserConf{}
@@ -68,8 +67,7 @@ func (e UserConf) Get(c *gin.Context) {
 
 // Update
 // @Description: 修改用户配置
-// @receiver e
-// @param c
+
 func (e UserConf) Update(c *gin.Context) {
 	req := dto.UserConfUpdateReq{}
 	s := service.UserConf{}

@@ -1,13 +1,14 @@
 package apis
 
 import (
-	"github.com/gin-gonic/gin"
 	"go-admin/app/plugins/msg/service"
 	"go-admin/app/plugins/msg/service/dto"
 	"go-admin/core/dto/api"
 	_ "go-admin/core/dto/response"
 	"go-admin/core/lang"
 	"go-admin/core/middleware"
+
+	"github.com/gin-gonic/gin"
 )
 
 type MsgCode struct {
@@ -16,8 +17,7 @@ type MsgCode struct {
 
 // GetPage
 // @Description: 获取验证码记录列表
-// @receiver e
-// @param c
+
 func (e MsgCode) GetPage(c *gin.Context) {
 	req := dto.MsgCodeQueryReq{}
 	s := service.MsgCode{}
@@ -41,8 +41,7 @@ func (e MsgCode) GetPage(c *gin.Context) {
 
 // Get
 // @Description: 获取验证码记录
-// @receiver e
-// @param c
+
 func (e MsgCode) Get(c *gin.Context) {
 	req := dto.MsgCodeGetReq{}
 	s := service.MsgCode{}

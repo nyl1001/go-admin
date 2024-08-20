@@ -2,7 +2,6 @@ package service
 
 import (
 	"fmt"
-	"github.com/xuri/excelize/v2"
 	adminService "go-admin/app/admin/service"
 	aLang "go-admin/app/app/user/lang"
 	"go-admin/app/app/user/models"
@@ -13,8 +12,10 @@ import (
 	"go-admin/core/global"
 	"go-admin/core/lang"
 	"go-admin/core/middleware"
-	"gorm.io/gorm"
 	"time"
+
+	"github.com/xuri/excelize/v2"
+	"gorm.io/gorm"
 )
 
 type UserLevel struct {
@@ -23,7 +24,6 @@ type UserLevel struct {
 
 // NewUserLevelService
 // @Description: 实例化UserLevel
-// @param s
 // @return *UserLevel
 func NewUserLevelService(s *service.Service) *UserLevel {
 	var srv = new(UserLevel)
@@ -34,9 +34,7 @@ func NewUserLevelService(s *service.Service) *UserLevel {
 
 // GetPage
 // @Description: 获取UserLevel列表
-// @receiver e
-// @param c
-// @param p
+
 // @return []models.UserLevel
 // @return int64
 // @return int
@@ -61,8 +59,6 @@ func (e *UserLevel) GetPage(c *dto.UserLevelQueryReq, p *middleware.DataPermissi
 // Get
 // @Description: 获取UserLevel对象
 // @receiver e
-// @param id 编号
-// @param p
 // @return *models.UserLevel
 // @return int
 // @return error
@@ -86,7 +82,6 @@ func (e *UserLevel) Get(id int64, p *middleware.DataPermission) (*models.UserLev
 // QueryOne
 // @Description: 通过自定义条件获取UserLevel一条记录
 // @receiver e
-// @param queryCondition 条件
 // @return *models.UserLevel
 // @return error
 func (e *UserLevel) QueryOne(queryCondition *dto.UserLevelQueryReq, p *middleware.DataPermission) (*models.UserLevel, int, error) {
@@ -108,7 +103,6 @@ func (e *UserLevel) QueryOne(queryCondition *dto.UserLevelQueryReq, p *middlewar
 //
 //	@Description: 获取条数
 //	@receiver e
-//	@param c
 //	@return int64
 //	@return int
 //	@return error
@@ -130,8 +124,7 @@ func (e *UserLevel) Count(queryCondition *dto.UserLevelQueryReq) (int64, int, er
 
 // Insert
 // @Description: 创建UserLevel对象
-// @receiver e
-// @param c
+
 // @return int64 插入数据的主键
 // @return int
 // @return error
@@ -180,9 +173,7 @@ func (e *UserLevel) Insert(c *dto.UserLevelInsertReq) (int64, int, error) {
 
 // Update
 // @Description: 修改UserLevel对象
-// @receiver e
-// @param c
-// @param p
+
 // @return bool 是否有数据更新
 // @return error
 func (e *UserLevel) Update(c *dto.UserLevelUpdateReq, p *middleware.DataPermission) (bool, int, error) {
@@ -230,8 +221,6 @@ func (e *UserLevel) Update(c *dto.UserLevelUpdateReq, p *middleware.DataPermissi
 // Remove
 // @Description: 删除UserLevel
 // @receiver e
-// @param ids
-// @param p
 // @return int
 // @return error
 func (e *UserLevel) Remove(ids []int64, p *middleware.DataPermission) (int, error) {
@@ -265,7 +254,6 @@ func (e *UserLevel) Remove(ids []int64, p *middleware.DataPermission) (int, erro
 // GetExcel
 // @Description: GetExcel 导出UserLevel excel数据
 // @receiver e
-// @param list
 // @return []byte
 // @return int
 // @return error

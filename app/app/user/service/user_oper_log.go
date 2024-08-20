@@ -2,7 +2,6 @@ package service
 
 import (
 	"fmt"
-	"github.com/xuri/excelize/v2"
 	adminService "go-admin/app/admin/service"
 	"go-admin/app/app/user/constant"
 	appLang "go-admin/app/app/user/lang"
@@ -17,8 +16,10 @@ import (
 	"go-admin/core/utils/dateutils"
 	"go-admin/core/utils/encrypt"
 	"go-admin/core/utils/strutils"
-	"gorm.io/gorm"
 	"time"
+
+	"github.com/xuri/excelize/v2"
+	"gorm.io/gorm"
 )
 
 type UserOperLog struct {
@@ -27,7 +28,6 @@ type UserOperLog struct {
 
 // NewUserOperLogService
 // @Description: 实例化UserOperLog
-// @param s
 // @return *UserOperLog
 func NewUserOperLogService(s *service.Service) *UserOperLog {
 	var srv = new(UserOperLog)
@@ -38,9 +38,7 @@ func NewUserOperLogService(s *service.Service) *UserOperLog {
 
 // GetPage
 // @Description: 获取UserOperLog列表
-// @receiver e
-// @param c
-// @param p
+
 // @return []models.UserOperLog
 // @return int64
 // @return int
@@ -104,8 +102,6 @@ func (e *UserOperLog) GetPage(c *dto.UserOperLogQueryReq, p *middleware.DataPerm
 // Get
 // @Description: 获取UserOperLog对象
 // @receiver e
-// @param id 编号
-// @param p
 // @return *models.UserOperLog
 // @return int
 // @return error
@@ -129,7 +125,6 @@ func (e *UserOperLog) Get(id int64, p *middleware.DataPermission) (*models.UserO
 // QueryOne
 // @Description: 通过自定义条件获取UserOperLog一条记录
 // @receiver e
-// @param queryCondition 条件
 // @return *models.UserOperLog
 // @return error
 func (e *UserOperLog) QueryOne(queryCondition *dto.UserOperLogQueryReq, p *middleware.DataPermission) (*models.UserOperLog, int, error) {
@@ -151,7 +146,6 @@ func (e *UserOperLog) QueryOne(queryCondition *dto.UserOperLogQueryReq, p *middl
 //
 //	@Description: 获取条数
 //	@receiver e
-//	@param c
 //	@return int64
 //	@return int
 //	@return error
@@ -173,8 +167,7 @@ func (e *UserOperLog) Count(queryCondition *dto.UserOperLogQueryReq) (int64, int
 
 // Insert
 // @Description: 创建UserOperLog对象
-// @receiver e
-// @param c
+
 // @return int64 插入数据的主键
 // @return int
 // @return error
@@ -208,7 +201,6 @@ func (e *UserOperLog) Insert(c *dto.UserOperLogInsertReq) (int64, int, error) {
 // GetExcel
 // @Description: GetExcel 导出UserOperLog excel数据
 // @receiver e
-// @param list
 // @return []byte
 // @return int
 // @return error

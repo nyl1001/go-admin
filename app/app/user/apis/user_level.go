@@ -1,7 +1,6 @@
 package apis
 
 import (
-	"github.com/gin-gonic/gin"
 	adminService "go-admin/app/admin/service"
 	"go-admin/app/app/user/service"
 	"go-admin/app/app/user/service/dto"
@@ -12,6 +11,8 @@ import (
 	"go-admin/core/middleware/auth"
 	"go-admin/core/utils/dateutils"
 	"time"
+
+	"github.com/gin-gonic/gin"
 )
 
 type UserLevel struct {
@@ -20,8 +21,7 @@ type UserLevel struct {
 
 // GetPage
 // @Description: 获取用户等级列表
-// @receiver e
-// @param c
+
 func (e UserLevel) GetPage(c *gin.Context) {
 	req := dto.UserLevelQueryReq{}
 	s := service.UserLevel{}
@@ -45,8 +45,7 @@ func (e UserLevel) GetPage(c *gin.Context) {
 
 // Get
 // @Description: 获取用户等级
-// @receiver e
-// @param c
+
 func (e UserLevel) Get(c *gin.Context) {
 	req := dto.UserLevelGetReq{}
 	s := service.UserLevel{}
@@ -70,8 +69,7 @@ func (e UserLevel) Get(c *gin.Context) {
 
 // Insert
 // @Description: 创建用户等级
-// @receiver e
-// @param c
+
 func (e UserLevel) Insert(c *gin.Context) {
 	req := dto.UserLevelInsertReq{}
 	s := service.UserLevel{}
@@ -100,8 +98,7 @@ func (e UserLevel) Insert(c *gin.Context) {
 
 // Update
 // @Description: 修改用户等级
-// @receiver e
-// @param c
+
 func (e UserLevel) Update(c *gin.Context) {
 	req := dto.UserLevelUpdateReq{}
 	s := service.UserLevel{}
@@ -135,8 +132,7 @@ func (e UserLevel) Update(c *gin.Context) {
 
 // Delete
 // @Description:用户等级
-// @receiver e
-// @param c
+
 func (e UserLevel) Delete(c *gin.Context) {
 	s := service.UserLevel{}
 	req := dto.UserLevelDeleteReq{}
@@ -161,8 +157,7 @@ func (e UserLevel) Delete(c *gin.Context) {
 
 // Export
 // @Description: 导出用户等级
-// @receiver e
-// @param c
+
 func (e UserLevel) Export(c *gin.Context) {
 	req := dto.UserLevelQueryReq{}
 	s := service.UserLevel{}

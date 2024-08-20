@@ -2,7 +2,6 @@ package service
 
 import (
 	"fmt"
-	"github.com/xuri/excelize/v2"
 	adminService "go-admin/app/admin/service"
 	"go-admin/app/app/user/models"
 	"go-admin/app/app/user/service/dto"
@@ -13,6 +12,8 @@ import (
 	"go-admin/core/middleware"
 	"go-admin/core/utils/encrypt"
 	"go-admin/core/utils/strutils"
+
+	"github.com/xuri/excelize/v2"
 	"gorm.io/gorm"
 )
 
@@ -22,7 +23,6 @@ type UserAccountLog struct {
 
 // NewUserAccountLogService
 // @Description: 实例化UserAccountLog
-// @param s
 // @return *UserAccountLog
 func NewUserAccountLogService(s *service.Service) *UserAccountLog {
 	var srv = new(UserAccountLog)
@@ -33,9 +33,7 @@ func NewUserAccountLogService(s *service.Service) *UserAccountLog {
 
 // GetPage
 // @Description: 获取UserAccountLog列表
-// @receiver e
-// @param c
-// @param p
+
 // @return []models.UserAccountLog
 // @return int64
 // @return int
@@ -97,8 +95,6 @@ func (e *UserAccountLog) GetPage(c *dto.UserAccountLogQueryReq, p *middleware.Da
 // Get
 // @Description: 获取UserAccountLog对象
 // @receiver e
-// @param id 编号
-// @param p
 // @return *models.UserAccountLog
 // @return int
 // @return error
@@ -122,7 +118,6 @@ func (e *UserAccountLog) Get(id int64, p *middleware.DataPermission) (*models.Us
 // QueryOne
 // @Description: 通过自定义条件获取UserAccountLog一条记录
 // @receiver e
-// @param queryCondition 条件
 // @return *models.UserAccountLog
 // @return error
 func (e *UserAccountLog) QueryOne(queryCondition *dto.UserAccountLogQueryReq, p *middleware.DataPermission) (*models.UserAccountLog, int, error) {
@@ -144,7 +139,6 @@ func (e *UserAccountLog) QueryOne(queryCondition *dto.UserAccountLogQueryReq, p 
 //
 //	@Description: 获取条数
 //	@receiver e
-//	@param c
 //	@return int64
 //	@return int
 //	@return error
@@ -167,7 +161,6 @@ func (e *UserAccountLog) Count(queryCondition *dto.UserAccountLogQueryReq) (int6
 // GetExcel
 // @Description: GetExcel 导出UserAccountLog excel数据
 // @receiver e
-// @param list
 // @return []byte
 // @return int
 // @return error

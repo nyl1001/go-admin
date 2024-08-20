@@ -1,7 +1,6 @@
 package apis
 
 import (
-	"github.com/gin-gonic/gin"
 	adminService "go-admin/app/admin/service"
 	"go-admin/app/plugins/content/service"
 	"go-admin/app/plugins/content/service/dto"
@@ -12,6 +11,8 @@ import (
 	"go-admin/core/middleware/auth"
 	"go-admin/core/utils/dateutils"
 	"time"
+
+	"github.com/gin-gonic/gin"
 )
 
 type ContentAnnouncement struct {
@@ -20,8 +21,7 @@ type ContentAnnouncement struct {
 
 // GetPage
 // @Description: 获取公告管理列表
-// @receiver e
-// @param c
+
 func (e ContentAnnouncement) GetPage(c *gin.Context) {
 	req := dto.ContentAnnouncementQueryReq{}
 	s := service.ContentAnnouncement{}
@@ -45,8 +45,7 @@ func (e ContentAnnouncement) GetPage(c *gin.Context) {
 
 // Get
 // @Description: 获取公告管理
-// @receiver e
-// @param c
+
 func (e ContentAnnouncement) Get(c *gin.Context) {
 	req := dto.ContentAnnouncementGetReq{}
 	s := service.ContentAnnouncement{}
@@ -70,8 +69,7 @@ func (e ContentAnnouncement) Get(c *gin.Context) {
 
 // Insert
 // @Description: 创建公告管理
-// @receiver e
-// @param c
+
 func (e ContentAnnouncement) Insert(c *gin.Context) {
 	req := dto.ContentAnnouncementInsertReq{}
 	s := service.ContentAnnouncement{}
@@ -100,8 +98,7 @@ func (e ContentAnnouncement) Insert(c *gin.Context) {
 
 // Update
 // @Description: 修改公告管理
-// @receiver e
-// @param c
+
 func (e ContentAnnouncement) Update(c *gin.Context) {
 	req := dto.ContentAnnouncementUpdateReq{}
 	s := service.ContentAnnouncement{}
@@ -135,8 +132,7 @@ func (e ContentAnnouncement) Update(c *gin.Context) {
 
 // Delete
 // @Description:公告管理
-// @receiver e
-// @param c
+
 func (e ContentAnnouncement) Delete(c *gin.Context) {
 	s := service.ContentAnnouncement{}
 	req := dto.ContentAnnouncementDeleteReq{}
@@ -161,8 +157,7 @@ func (e ContentAnnouncement) Delete(c *gin.Context) {
 
 // Export
 // @Description: 导出公告管理
-// @receiver e
-// @param c
+
 func (e ContentAnnouncement) Export(c *gin.Context) {
 	req := dto.ContentAnnouncementQueryReq{}
 	s := service.ContentAnnouncement{}

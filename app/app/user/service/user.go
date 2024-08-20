@@ -2,7 +2,6 @@ package service
 
 import (
 	"fmt"
-	"github.com/xuri/excelize/v2"
 	adminService "go-admin/app/admin/service"
 	"go-admin/app/app/user/constant"
 	uLang "go-admin/app/app/user/lang"
@@ -20,8 +19,11 @@ import (
 	"strconv"
 	"strings"
 
-	"gorm.io/gorm"
+	"github.com/xuri/excelize/v2"
+
 	"time"
+
+	"gorm.io/gorm"
 )
 
 type User struct {
@@ -30,7 +32,6 @@ type User struct {
 
 // NewUserService
 // @Description: 实例化User
-// @param s
 // @return *User
 func NewUserService(s *service.Service) *User {
 	var srv = new(User)
@@ -41,9 +42,7 @@ func NewUserService(s *service.Service) *User {
 
 // GetPage
 // @Description: 获取User列表
-// @receiver e
-// @param c
-// @param p
+
 // @return []models.User
 // @return int64
 // @return int
@@ -120,8 +119,6 @@ func (e *User) GetPage(c *dto.UserQueryReq, p *middleware.DataPermission) ([]mod
 // Get
 // @Description: 获取User对象
 // @receiver e
-// @param id 编号
-// @param p
 // @return *models.User
 // @return int
 // @return error
@@ -151,7 +148,6 @@ func (e *User) Get(id int64, p *middleware.DataPermission) (*models.User, int, e
 // QueryOne
 // @Description: 通过自定义条件获取User一条记录
 // @receiver e
-// @param queryCondition 条件
 // @return *models.User
 // @return error
 func (e *User) QueryOne(queryCondition *dto.UserQueryReq, p *middleware.DataPermission) (*models.User, int, error) {
@@ -184,7 +180,6 @@ func (e *User) queryMaxTreeSort(queryCondition *dto.UserQueryReq) (int64, int, e
 //
 //	@Description: 获取条数
 //	@receiver e
-//	@param c
 //	@return int64
 //	@return int
 //	@return error
@@ -206,8 +201,7 @@ func (e *User) Count(queryCondition *dto.UserQueryReq) (int64, int, error) {
 
 // Insert
 // @Description: 创建User对象
-// @receiver e
-// @param c
+
 // @return int64 插入数据的主键
 // @return int
 // @return error
@@ -432,9 +426,7 @@ func (e *User) insertMemUser(registerType, email, mobile, mobileTitle string, re
 
 // Update
 // @Description: 修改User对象
-// @receiver e
-// @param c
-// @param p
+
 // @return bool 是否有数据更新
 // @return error
 func (e *User) Update(c *dto.UserUpdateReq, p *middleware.DataPermission) (bool, int, error) {
@@ -558,7 +550,6 @@ func (e *User) UpdateStatus(c *dto.UserStatusUpdateReq, p *middleware.DataPermis
 // GetExcel
 // @Description: GetExcel 导出User excel数据
 // @receiver e
-// @param list
 // @return []byte
 // @return int
 // @return error

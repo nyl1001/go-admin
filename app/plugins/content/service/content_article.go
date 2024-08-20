@@ -2,7 +2,6 @@ package service
 
 import (
 	"fmt"
-	"github.com/xuri/excelize/v2"
 	sysLang "go-admin/app/admin/lang"
 	cLang "go-admin/app/plugins/content/lang"
 	"go-admin/app/plugins/content/models"
@@ -13,8 +12,11 @@ import (
 	"go-admin/core/middleware"
 	"go-admin/core/utils/dateutils"
 
-	"gorm.io/gorm"
+	"github.com/xuri/excelize/v2"
+
 	"time"
+
+	"gorm.io/gorm"
 )
 
 type ContentArticle struct {
@@ -23,7 +25,6 @@ type ContentArticle struct {
 
 // NewContentArticleService
 // @Description: 实例化ContentArticle
-// @param s
 // @return *ContentArticle
 func NewContentArticleService(s *service.Service) *ContentArticle {
 	var srv = new(ContentArticle)
@@ -34,9 +35,7 @@ func NewContentArticleService(s *service.Service) *ContentArticle {
 
 // GetPage
 // @Description: 获取ContentArticle列表
-// @receiver e
-// @param c
-// @param p
+
 // @return []models.ContentArticle
 // @return int64
 // @return int
@@ -61,8 +60,6 @@ func (e *ContentArticle) GetPage(c *dto.ContentArticleQueryReq, p *middleware.Da
 // Get
 // @Description: 获取ContentArticle对象
 // @receiver e
-// @param id 编号
-// @param p
 // @return *models.ContentArticle
 // @return int
 // @return error
@@ -86,7 +83,6 @@ func (e *ContentArticle) Get(id int64, p *middleware.DataPermission) (*models.Co
 // QueryOne
 // @Description: 通过自定义条件获取ContentArticle一条记录
 // @receiver e
-// @param queryCondition 条件
 // @return *models.ContentArticle
 // @return error
 func (e *ContentArticle) QueryOne(queryCondition *dto.ContentArticleQueryReq, p *middleware.DataPermission) (*models.ContentArticle, int, error) {
@@ -108,7 +104,6 @@ func (e *ContentArticle) QueryOne(queryCondition *dto.ContentArticleQueryReq, p 
 //
 //	@Description: 获取条数
 //	@receiver e
-//	@param c
 //	@return int64
 //	@return int
 //	@return error
@@ -130,8 +125,7 @@ func (e *ContentArticle) Count(queryCondition *dto.ContentArticleQueryReq) (int6
 
 // Insert
 // @Description: 创建ContentArticle对象
-// @receiver e
-// @param c
+
 // @return int64 插入数据的主键
 // @return int
 // @return error
@@ -189,9 +183,7 @@ func (e *ContentArticle) Insert(c *dto.ContentArticleInsertReq) (int64, int, err
 
 // Update
 // @Description: 修改ContentArticle对象
-// @receiver e
-// @param c
-// @param p
+
 // @return bool 是否有数据更新
 // @return error
 func (e *ContentArticle) Update(c *dto.ContentArticleUpdateReq, p *middleware.DataPermission) (bool, int, error) {
@@ -250,8 +242,6 @@ func (e *ContentArticle) Update(c *dto.ContentArticleUpdateReq, p *middleware.Da
 // Remove
 // @Description: 删除ContentArticle
 // @receiver e
-// @param ids
-// @param p
 // @return int
 // @return error
 func (e *ContentArticle) Remove(ids []int64, p *middleware.DataPermission) (int, error) {
@@ -271,7 +261,6 @@ func (e *ContentArticle) Remove(ids []int64, p *middleware.DataPermission) (int,
 // GetExcel
 // @Description: GetExcel 导出ContentArticle excel数据
 // @receiver e
-// @param list
 // @return []byte
 // @return int
 // @return error

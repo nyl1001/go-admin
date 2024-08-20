@@ -1,8 +1,6 @@
 package apis
 
 import (
-	"github.com/gin-gonic/gin"
-	"github.com/gin-gonic/gin/binding"
 	"go-admin/app/admin/constant"
 	sysLang "go-admin/app/admin/lang"
 	"go-admin/app/admin/service"
@@ -18,6 +16,9 @@ import (
 	"go-admin/core/utils/fileutils"
 	"go-admin/core/utils/idgen"
 	"net/http"
+
+	"github.com/gin-gonic/gin"
+	"github.com/gin-gonic/gin/binding"
 )
 
 type SysUser struct {
@@ -152,8 +153,6 @@ func (e SysUser) Delete(c *gin.Context) {
 
 // UpdateSelfPhone
 // @Description: 更新手机号
-// @receiver e
-// @param c
 func (e SysUser) UpdateSelfPhone(c *gin.Context) {
 	s := service.SysUser{}
 	req := dto.SysUserPhoneUpdateReq{}
@@ -220,8 +219,6 @@ func (e SysUser) UpdateSelfNickName(c *gin.Context) {
 
 // UpdateSelfEmail
 // @Description: 更新邮箱
-// @receiver e
-// @param c
 func (e SysUser) UpdateSelfEmail(c *gin.Context) {
 	s := service.SysUser{}
 	req := dto.SysUserUpdateEmailReq{}

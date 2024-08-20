@@ -1,0 +1,140 @@
+definitions:
+  dto.SysApiUpdateReq:
+    properties:
+      apiType:
+        description: Path       string `json:"path" comment:"地址"`
+        type: string
+      title:
+        description: Handle     string `json:"handle" comment:"handle"`
+        type: string
+    type: object
+  dto.SysGenColumnUpdateReq:
+    properties:
+      columnComment:
+        type: string
+      columnName:
+        type: string
+      dictType:
+        type: string
+      goField:
+        type: string
+      goType:
+        type: string
+      htmlType:
+        type: string
+      id:
+        description: 主键编码
+        type: integer
+      isEdit:
+        type: string
+      isList:
+        type: string
+      isMust:
+        type: string
+      isQuery:
+        type: string
+      isRequired:
+        type: string
+      jsonField:
+        type: string
+      queryType:
+        type: string
+    type: object
+  dto.SysGenTableUpdateReq:
+    properties:
+      businessName:
+        type: string
+      className:
+        type: string
+      functionAuthor:
+        type: string
+      functionName:
+        type: string
+      moduleName:
+        type: string
+      packageName:
+        type: string
+      remark:
+        type: string
+      sysGenColumns:
+        items:
+          $ref: '#/definitions/dto.SysGenColumnUpdateReq'
+        type: array
+      tableComment:
+        description: 表备注
+        type: string
+    type: object
+  response.Response:
+    properties:
+      code:
+        type: integer
+      msg:
+        type: string
+      requestId:
+        description: 数据集
+        type: string
+    type: object
+info:
+  contact: {}
+  title: Go-admin 后台管理系统
+  version: 2.0.0
+paths:
+  /admin-api/v1/server-monitor:
+    get:
+      description: 获取JSON
+      responses:
+        "200":
+          description: '{"code": 200, "data": [...]}'
+          schema:
+            $ref: '#/definitions/response.Response'
+      summary: 系统信息
+      tags:
+      - 系统信息
+  /admin-api/v1/sys-api/{id}:
+    put:
+      consumes:
+      - application/json
+      description: 修改接口管理
+      parameters:
+      - description: body
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/dto.SysApiUpdateReq'
+      responses:
+        "200":
+          description: '{"code": -1, "message": "添加失败"}'
+          schema:
+            type: string
+      summary: 修改接口管理
+      tags:
+      - 接口管理
+  /admin-api/v1/sys/tables/info:
+    put:
+      consumes:
+      - application/json
+      description: 修改表结构
+      parameters:
+      - description: body
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/dto.SysGenTableUpdateReq'
+      responses:
+        "200":
+          description: '{"code": -1, "message": "添加失败"}'
+          schema:
+            type: string
+      summary: 修改表结构
+      tags:
+      - 工具 / 生成工具
+  /api/v1/app-manager/upload:
+    post:
+      description: 上传App文件
+      responses: {}
+      summary: 上传App文件
+      tags:
+      - App管理
+swagger: "2.0"

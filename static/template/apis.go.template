@@ -21,8 +21,7 @@ type {{.ClassName}} struct {
 //
 // GetPage
 // @Description: 获取{{.TableComment}}列表
-// @receiver e
-// @param c
+
 //
 func (e {{.ClassName}}) GetPage(c *gin.Context) {
     req := dto.{{.ClassName}}QueryReq{}
@@ -48,8 +47,7 @@ func (e {{.ClassName}}) GetPage(c *gin.Context) {
 //
 // Get
 // @Description: 获取{{.TableComment}}
-// @receiver e
-// @param c
+
 //
 func (e {{.ClassName}}) Get(c *gin.Context) {
 	req := dto.{{.ClassName}}GetReq{}
@@ -75,8 +73,7 @@ func (e {{.ClassName}}) Get(c *gin.Context) {
 //
 // Insert
 // @Description: 创建{{.TableComment}}
-// @receiver e
-// @param c
+
 //
 func (e {{.ClassName}}) Insert(c *gin.Context) {
     req := dto.{{.ClassName}}InsertReq{}
@@ -107,8 +104,7 @@ func (e {{.ClassName}}) Insert(c *gin.Context) {
 //
 // Update
 // @Description: 修改{{.TableComment}}
-// @receiver e
-// @param c
+
 //
 func (e {{.ClassName}}) Update(c *gin.Context) {
     req := dto.{{.ClassName}}UpdateReq{}
@@ -144,8 +140,7 @@ func (e {{.ClassName}}) Update(c *gin.Context) {
 //
 // Delete
 // @Description:{{.TableComment}}
-// @receiver e
-// @param c
+
 //
 func (e {{.ClassName}}) Delete(c *gin.Context) {
     s := service.{{.ClassName}}{}
@@ -172,8 +167,7 @@ func (e {{.ClassName}}) Delete(c *gin.Context) {
 //
 // Export
 // @Description: 导出{{.TableComment}}
-// @receiver e
-// @param c
+
 //
 func (e {{.ClassName}}) Export(c *gin.Context) {
     req := dto.{{.ClassName}}QueryReq{}

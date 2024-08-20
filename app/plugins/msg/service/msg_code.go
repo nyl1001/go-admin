@@ -7,6 +7,7 @@ import (
 	"go-admin/core/dto/service"
 	"go-admin/core/lang"
 	"go-admin/core/middleware"
+
 	"gorm.io/gorm"
 )
 
@@ -16,7 +17,6 @@ type MsgCode struct {
 
 // NewMsgCodeService
 // @Description: 实例化MsgCode
-// @param s
 // @return *MsgCode
 func NewMsgCodeService(s *service.Service) *MsgCode {
 	var srv = new(MsgCode)
@@ -27,9 +27,7 @@ func NewMsgCodeService(s *service.Service) *MsgCode {
 
 // GetPage
 // @Description: 获取MsgCode列表
-// @receiver e
-// @param c
-// @param p
+
 // @return []models.MsgCode
 // @return int64
 // @return int
@@ -54,8 +52,6 @@ func (e *MsgCode) GetPage(c *dto.MsgCodeQueryReq, p *middleware.DataPermission) 
 // Get
 // @Description: 获取MsgCode对象
 // @receiver e
-// @param id 编号
-// @param p
 // @return *models.MsgCode
 // @return int
 // @return error
@@ -79,7 +75,6 @@ func (e *MsgCode) Get(id int64, p *middleware.DataPermission) (*models.MsgCode, 
 // QueryOne
 // @Description: 通过自定义条件获取MsgCode一条记录
 // @receiver e
-// @param queryCondition 条件
 // @return *models.MsgCode
 // @return error
 func (e *MsgCode) QueryOne(queryCondition *dto.MsgCodeQueryReq, p *middleware.DataPermission) (*models.MsgCode, int, error) {
@@ -101,7 +96,6 @@ func (e *MsgCode) QueryOne(queryCondition *dto.MsgCodeQueryReq, p *middleware.Da
 //
 //	@Description: 获取条数
 //	@receiver e
-//	@param c
 //	@return int64
 //	@return int
 //	@return error

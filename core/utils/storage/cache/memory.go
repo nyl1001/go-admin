@@ -3,11 +3,12 @@ package cache
 import (
 	"errors"
 	"fmt"
-	"github.com/spf13/cast"
 	"go-admin/core/runtime"
 	"strconv"
 	"sync"
 	"time"
+
+	"github.com/spf13/cast"
 )
 
 type item struct {
@@ -59,9 +60,6 @@ func (m *Memory) Get(prefix, key string) (string, error) {
 // Set
 // @Description:
 // @receiver m
-// @param key
-// @param val
-// @param expire 单位秒，若小于0，则表示不清除，始终停留在内存中
 // @return error
 func (m *Memory) Set(prefix, key string, val interface{}, expire int) error {
 	key = prefix + runtime.IntervalTenant + key

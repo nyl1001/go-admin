@@ -1,7 +1,6 @@
 package apis
 
 import (
-	"github.com/gin-gonic/gin"
 	adminService "go-admin/app/admin/service"
 	"go-admin/app/app/user/service"
 	"go-admin/app/app/user/service/dto"
@@ -11,6 +10,8 @@ import (
 	"go-admin/core/middleware"
 	"go-admin/core/utils/dateutils"
 	"time"
+
+	"github.com/gin-gonic/gin"
 )
 
 type UserOperLog struct {
@@ -19,8 +20,7 @@ type UserOperLog struct {
 
 // GetPage
 // @Description: 获取用户关键行为日志表列表
-// @receiver e
-// @param c
+
 func (e UserOperLog) GetPage(c *gin.Context) {
 	req := dto.UserOperLogQueryReq{}
 	s := service.UserOperLog{}
@@ -45,8 +45,7 @@ func (e UserOperLog) GetPage(c *gin.Context) {
 
 // Get
 // @Description: 获取用户关键行为日志表
-// @receiver e
-// @param c
+
 func (e UserOperLog) Get(c *gin.Context) {
 	req := dto.UserOperLogGetReq{}
 	s := service.UserOperLog{}
@@ -70,8 +69,7 @@ func (e UserOperLog) Get(c *gin.Context) {
 
 // Export
 // @Description: 导出用户关键行为日志表
-// @receiver e
-// @param c
+
 func (e UserOperLog) Export(c *gin.Context) {
 	req := dto.UserOperLogQueryReq{}
 	s := service.UserOperLog{}

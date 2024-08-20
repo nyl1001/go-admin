@@ -1,7 +1,6 @@
 package apis
 
 import (
-	"github.com/gin-gonic/gin"
 	"go-admin/app/admin/service"
 	adminService "go-admin/app/admin/service"
 	"go-admin/app/admin/service/dto"
@@ -12,6 +11,8 @@ import (
 	"go-admin/core/middleware/auth"
 	"go-admin/core/utils/dateutils"
 	"time"
+
+	"github.com/gin-gonic/gin"
 )
 
 type SysApi struct {
@@ -66,6 +67,12 @@ func (e SysApi) Get(c *gin.Context) {
 // @Summary 修改接口管理
 // @Description 修改接口管理
 // @Tags 接口管理
+// @Accept  application/json
+// @Product application/json
+// @Param data body dto.SysApiUpdateReq true "body"
+// @Success 200 {string} string	"{"code": 200, "message": "添加成功"}"
+// @Success 200 {string} string	"{"code": -1, "message": "添加失败"}"
+// @Router /admin-api/v1/sys-api/{id} [put]
 func (e SysApi) Update(c *gin.Context) {
 	req := dto.SysApiUpdateReq{}
 	s := service.SysApi{}

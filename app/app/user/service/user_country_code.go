@@ -2,7 +2,6 @@ package service
 
 import (
 	"fmt"
-	"github.com/xuri/excelize/v2"
 	adminService "go-admin/app/admin/service"
 	uLang "go-admin/app/app/user/lang"
 	"go-admin/app/app/user/models"
@@ -11,8 +10,10 @@ import (
 	"go-admin/core/dto/service"
 	"go-admin/core/lang"
 	"go-admin/core/middleware"
-	"gorm.io/gorm"
 	"time"
+
+	"github.com/xuri/excelize/v2"
+	"gorm.io/gorm"
 )
 
 type UserCountryCode struct {
@@ -21,7 +22,6 @@ type UserCountryCode struct {
 
 // NewUserCountryCodeService
 // @Description: 实例化UserCountryCode
-// @param s
 // @return *UserCountryCode
 func NewUserCountryCodeService(s *service.Service) *UserCountryCode {
 	var srv = new(UserCountryCode)
@@ -32,9 +32,7 @@ func NewUserCountryCodeService(s *service.Service) *UserCountryCode {
 
 // GetPage
 // @Description: 获取UserCountryCode列表
-// @receiver e
-// @param c
-// @param p
+
 // @return []models.UserCountryCode
 // @return int64
 // @return int
@@ -59,8 +57,6 @@ func (e *UserCountryCode) GetPage(c *dto.UserCountryCodeQueryReq, p *middleware.
 // Get
 // @Description: 获取UserCountryCode对象
 // @receiver e
-// @param id 编号
-// @param p
 // @return *models.UserCountryCode
 // @return int
 // @return error
@@ -84,7 +80,6 @@ func (e *UserCountryCode) Get(id int64, p *middleware.DataPermission) (*models.U
 // QueryOne
 // @Description: 通过自定义条件获取UserCountryCode一条记录
 // @receiver e
-// @param queryCondition 条件
 // @return *models.UserCountryCode
 // @return error
 func (e *UserCountryCode) QueryOne(queryCondition *dto.UserCountryCodeQueryReq, p *middleware.DataPermission) (*models.UserCountryCode, int, error) {
@@ -106,7 +101,6 @@ func (e *UserCountryCode) QueryOne(queryCondition *dto.UserCountryCodeQueryReq, 
 //
 //	@Description: 获取条数
 //	@receiver e
-//	@param c
 //	@return int64
 //	@return int
 //	@return error
@@ -128,8 +122,7 @@ func (e *UserCountryCode) Count(queryCondition *dto.UserCountryCodeQueryReq) (in
 
 // Insert
 // @Description: 创建UserCountryCode对象
-// @receiver e
-// @param c
+
 // @return int64 插入数据的主键
 // @return int
 // @return error
@@ -187,9 +180,7 @@ func (e *UserCountryCode) Insert(c *dto.UserCountryCodeInsertReq) (int64, int, e
 
 // Update
 // @Description: 修改UserCountryCode对象
-// @receiver e
-// @param c
-// @param p
+
 // @return bool 是否有数据更新
 // @return error
 func (e *UserCountryCode) Update(c *dto.UserCountryCodeUpdateReq, p *middleware.DataPermission) (bool, int, error) {
@@ -254,8 +245,6 @@ func (e *UserCountryCode) Update(c *dto.UserCountryCodeUpdateReq, p *middleware.
 // Remove
 // @Description: 删除UserCountryCode
 // @receiver e
-// @param ids
-// @param p
 // @return int
 // @return error
 func (e *UserCountryCode) Remove(ids []int64, p *middleware.DataPermission) (int, error) {
@@ -275,7 +264,6 @@ func (e *UserCountryCode) Remove(ids []int64, p *middleware.DataPermission) (int
 // GetExcel
 // @Description: GetExcel 导出UserCountryCode excel数据
 // @receiver e
-// @param list
 // @return []byte
 // @return int
 // @return error

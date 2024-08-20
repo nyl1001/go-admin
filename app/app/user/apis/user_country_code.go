@@ -1,7 +1,6 @@
 package apis
 
 import (
-	"github.com/gin-gonic/gin"
 	adminService "go-admin/app/admin/service"
 	"go-admin/app/app/user/service"
 	"go-admin/app/app/user/service/dto"
@@ -12,6 +11,8 @@ import (
 	"go-admin/core/middleware/auth"
 	"go-admin/core/utils/dateutils"
 	"time"
+
+	"github.com/gin-gonic/gin"
 )
 
 type UserCountryCode struct {
@@ -20,8 +21,7 @@ type UserCountryCode struct {
 
 // GetPage
 // @Description: 获取国家电话区号列表
-// @receiver e
-// @param c
+
 func (e UserCountryCode) GetPage(c *gin.Context) {
 	req := dto.UserCountryCodeQueryReq{}
 	s := service.UserCountryCode{}
@@ -45,8 +45,7 @@ func (e UserCountryCode) GetPage(c *gin.Context) {
 
 // Get
 // @Description: 获取国家电话区号
-// @receiver e
-// @param c
+
 func (e UserCountryCode) Get(c *gin.Context) {
 	req := dto.UserCountryCodeGetReq{}
 	s := service.UserCountryCode{}
@@ -70,8 +69,7 @@ func (e UserCountryCode) Get(c *gin.Context) {
 
 // Insert
 // @Description: 创建国家电话区号
-// @receiver e
-// @param c
+
 func (e UserCountryCode) Insert(c *gin.Context) {
 	req := dto.UserCountryCodeInsertReq{}
 	s := service.UserCountryCode{}
@@ -100,8 +98,7 @@ func (e UserCountryCode) Insert(c *gin.Context) {
 
 // Update
 // @Description: 修改国家电话区号
-// @receiver e
-// @param c
+
 func (e UserCountryCode) Update(c *gin.Context) {
 	req := dto.UserCountryCodeUpdateReq{}
 	s := service.UserCountryCode{}
@@ -135,8 +132,7 @@ func (e UserCountryCode) Update(c *gin.Context) {
 
 // Delete
 // @Description:国家电话区号
-// @receiver e
-// @param c
+
 func (e UserCountryCode) Delete(c *gin.Context) {
 	s := service.UserCountryCode{}
 	req := dto.UserCountryCodeDeleteReq{}
@@ -161,8 +157,7 @@ func (e UserCountryCode) Delete(c *gin.Context) {
 
 // Export
 // @Description: 导出国家电话区号
-// @receiver e
-// @param c
+
 func (e UserCountryCode) Export(c *gin.Context) {
 	req := dto.UserCountryCodeQueryReq{}
 	s := service.UserCountryCode{}

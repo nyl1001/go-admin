@@ -1,7 +1,6 @@
 package apis
 
 import (
-	"github.com/gin-gonic/gin"
 	adminService "go-admin/app/admin/service"
 	"go-admin/app/app/user/service"
 	"go-admin/app/app/user/service/dto"
@@ -12,6 +11,8 @@ import (
 	"go-admin/core/middleware/auth"
 	"go-admin/core/utils/dateutils"
 	"time"
+
+	"github.com/gin-gonic/gin"
 )
 
 type User struct {
@@ -20,8 +21,7 @@ type User struct {
 
 // GetPage
 // @Description: 获取用户管理列表
-// @receiver e
-// @param c
+
 func (e User) GetPage(c *gin.Context) {
 	req := dto.UserQueryReq{}
 	s := service.User{}
@@ -47,8 +47,7 @@ func (e User) GetPage(c *gin.Context) {
 
 // Get
 // @Description: 获取用户管理
-// @receiver e
-// @param c
+
 func (e User) Get(c *gin.Context) {
 	req := dto.UserGetReq{}
 	s := service.User{}
@@ -72,8 +71,7 @@ func (e User) Get(c *gin.Context) {
 
 // Insert
 // @Description: 创建用户管理
-// @receiver e
-// @param c
+
 func (e User) Insert(c *gin.Context) {
 	req := dto.UserInsertReq{}
 	s := service.User{}
@@ -102,8 +100,7 @@ func (e User) Insert(c *gin.Context) {
 
 // Update
 // @Description: 修改用户管理
-// @receiver e
-// @param c
+
 func (e User) Update(c *gin.Context) {
 	req := dto.UserUpdateReq{}
 	s := service.User{}
@@ -137,8 +134,7 @@ func (e User) Update(c *gin.Context) {
 
 // Export
 // @Description: 导出用户管理
-// @receiver e
-// @param c
+
 func (e User) Export(c *gin.Context) {
 	req := dto.UserQueryReq{}
 	s := service.User{}

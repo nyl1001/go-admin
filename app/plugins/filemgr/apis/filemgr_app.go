@@ -1,7 +1,6 @@
 package apis
 
 import (
-	"github.com/gin-gonic/gin"
 	adminService "go-admin/app/admin/service"
 	fLang "go-admin/app/plugins/filemgr/lang"
 	"go-admin/app/plugins/filemgr/service"
@@ -14,6 +13,8 @@ import (
 	"go-admin/core/utils/dateutils"
 	"mime/multipart"
 	"time"
+
+	"github.com/gin-gonic/gin"
 )
 
 type FilemgrApp struct {
@@ -22,8 +23,7 @@ type FilemgrApp struct {
 
 // GetPage
 // @Description: 获取App管理列表
-// @receiver e
-// @param c
+
 func (e FilemgrApp) GetPage(c *gin.Context) {
 	req := dto.FilemgrAppQueryReq{}
 	s := service.FilemgrApp{}
@@ -47,8 +47,7 @@ func (e FilemgrApp) GetPage(c *gin.Context) {
 
 // Get
 // @Description: 获取App管理
-// @receiver e
-// @param c
+
 func (e FilemgrApp) Get(c *gin.Context) {
 	req := dto.FilemgrAppGetReq{}
 	s := service.FilemgrApp{}
@@ -72,8 +71,7 @@ func (e FilemgrApp) Get(c *gin.Context) {
 
 // Insert
 // @Description: 创建App管理
-// @receiver e
-// @param c
+
 func (e FilemgrApp) Insert(c *gin.Context) {
 	req := dto.FilemgrAppInsertReq{}
 	s := service.FilemgrApp{}
@@ -102,8 +100,7 @@ func (e FilemgrApp) Insert(c *gin.Context) {
 
 // Delete
 // @Description:App管理
-// @receiver e
-// @param c
+
 func (e FilemgrApp) Delete(c *gin.Context) {
 	s := service.FilemgrApp{}
 	req := dto.FilemgrAppDeleteReq{}
@@ -167,8 +164,7 @@ func (e FilemgrApp) Upload(c *gin.Context) {
 
 // Update
 // @Description: 修改App管理
-// @receiver e
-// @param c
+
 func (e FilemgrApp) Update(c *gin.Context) {
 	req := dto.FilemgrAppUpdateReq{}
 	s := service.FilemgrApp{}
@@ -202,8 +198,7 @@ func (e FilemgrApp) Update(c *gin.Context) {
 
 // Export
 // @Description: 导出App管理
-// @receiver e
-// @param c
+
 func (e FilemgrApp) Export(c *gin.Context) {
 	req := dto.FilemgrAppQueryReq{}
 	s := service.FilemgrApp{}

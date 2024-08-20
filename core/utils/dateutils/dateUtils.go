@@ -3,8 +3,6 @@ package dateutils
 import "time"
 
 // GetDistanceOfTwoDate
-// @param timeStart
-// @param timeEnd
 // @return int64
 func GetDistanceOfTwoDate(timeStart, timeEnd time.Time) int64 {
 	before := timeStart.Unix()
@@ -67,8 +65,6 @@ func ParseTimestrToTime(timeStr string, flag int) time.Time {
 
 // ConvertToStrByPrt
 // @Description:
-// @param dateTime
-// @param flag
 // @return string
 func ConvertToStrByPrt(dateTime *time.Time, flag int) string {
 	if dateTime == nil {
@@ -98,8 +94,6 @@ func ConvertToStr(dateTime time.Time, flag int) string {
 //
 //  ConvertToStrByPrt
 //  @Description: 传入的地址是指针，避免外部频繁判断是否为空
-//  @param dateTime
-//  @param flag
 //  @return string
 //
 /*func ConvertToStrByPrt(dateTime *time.Time, flag int) string {

@@ -1,7 +1,6 @@
 package apis
 
 import (
-	"github.com/gin-gonic/gin"
 	adminService "go-admin/app/admin/service"
 	"go-admin/app/app/user/service"
 	"go-admin/app/app/user/service/dto"
@@ -11,6 +10,8 @@ import (
 	"go-admin/core/middleware"
 	"go-admin/core/utils/dateutils"
 	"time"
+
+	"github.com/gin-gonic/gin"
 )
 
 type UserAccountLog struct {
@@ -19,8 +20,7 @@ type UserAccountLog struct {
 
 // GetPage
 // @Description: 获取账变记录列表
-// @receiver e
-// @param c
+
 func (e UserAccountLog) GetPage(c *gin.Context) {
 	req := dto.UserAccountLogQueryReq{}
 	s := service.UserAccountLog{}
@@ -45,8 +45,7 @@ func (e UserAccountLog) GetPage(c *gin.Context) {
 
 // Get
 // @Description: 获取账变记录
-// @receiver e
-// @param c
+
 func (e UserAccountLog) Get(c *gin.Context) {
 	req := dto.UserAccountLogGetReq{}
 	s := service.UserAccountLog{}
@@ -70,8 +69,7 @@ func (e UserAccountLog) Get(c *gin.Context) {
 
 // Export
 // @Description: 导出账变记录
-// @receiver e
-// @param c
+
 func (e UserAccountLog) Export(c *gin.Context) {
 	req := dto.UserAccountLogQueryReq{}
 	s := service.UserAccountLog{}

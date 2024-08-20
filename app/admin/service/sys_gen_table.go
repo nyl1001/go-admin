@@ -15,10 +15,11 @@ import (
 	"go-admin/core/middleware"
 	"go-admin/core/utils/dateutils"
 	"go-admin/core/utils/fileutils"
-	"gorm.io/gorm"
 	"strings"
 	"text/template"
 	"time"
+
+	"gorm.io/gorm"
 )
 
 type SysGenTable struct {
@@ -396,8 +397,6 @@ func (e *SysGenTable) getDBTableList(tableNames []string) ([]models.DBTable, int
 //
 //	@Description: 代码预览
 //	@receiver e
-//	@param c
-//	@param p
 //	@return []dto.TemplateResp
 //	@return int
 //	@return error
@@ -470,7 +469,6 @@ func (e *SysGenTable) Preview(c dto.SysGenTableGenCodeReq, p *middleware.DataPer
 //
 //	@Description: 生成代码文件
 //	@receiver e
-//	@param c
 func (e *SysGenTable) GenCode(c dto.SysGenTableGenCodeReq, p *middleware.DataPermission) (*bytes.Buffer, int, error) {
 	if c.Id <= 0 {
 		return nil, lang.ParamErrCode, lang.MsgErr(lang.ParamErrCode, e.Lang)

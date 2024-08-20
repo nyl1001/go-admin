@@ -1,7 +1,6 @@
 package apis
 
 import (
-	"github.com/gin-gonic/gin"
 	adminService "go-admin/app/admin/service"
 	"go-admin/app/plugins/content/service"
 	"go-admin/app/plugins/content/service/dto"
@@ -12,6 +11,8 @@ import (
 	"go-admin/core/middleware/auth"
 	"go-admin/core/utils/dateutils"
 	"time"
+
+	"github.com/gin-gonic/gin"
 )
 
 type ContentCategory struct {
@@ -20,8 +21,7 @@ type ContentCategory struct {
 
 // GetPage
 // @Description: 获取内容分类列表
-// @receiver e
-// @param c
+
 func (e ContentCategory) GetPage(c *gin.Context) {
 	req := dto.ContentCategoryQueryReq{}
 	s := service.ContentCategory{}
@@ -45,8 +45,7 @@ func (e ContentCategory) GetPage(c *gin.Context) {
 
 // Get
 // @Description: 获取内容分类
-// @receiver e
-// @param c
+
 func (e ContentCategory) Get(c *gin.Context) {
 	req := dto.ContentCategoryGetReq{}
 	s := service.ContentCategory{}
@@ -70,8 +69,7 @@ func (e ContentCategory) Get(c *gin.Context) {
 
 // Insert
 // @Description: 创建内容分类
-// @receiver e
-// @param c
+
 func (e ContentCategory) Insert(c *gin.Context) {
 	req := dto.ContentCategoryInsertReq{}
 	s := service.ContentCategory{}
@@ -100,8 +98,7 @@ func (e ContentCategory) Insert(c *gin.Context) {
 
 // Update
 // @Description: 修改内容分类
-// @receiver e
-// @param c
+
 func (e ContentCategory) Update(c *gin.Context) {
 	req := dto.ContentCategoryUpdateReq{}
 	s := service.ContentCategory{}
@@ -135,8 +132,7 @@ func (e ContentCategory) Update(c *gin.Context) {
 
 // Delete
 // @Description:内容分类
-// @receiver e
-// @param c
+
 func (e ContentCategory) Delete(c *gin.Context) {
 	s := service.ContentCategory{}
 	req := dto.ContentCategoryDeleteReq{}
@@ -161,8 +157,7 @@ func (e ContentCategory) Delete(c *gin.Context) {
 
 // Export
 // @Description: 导出内容分类
-// @receiver e
-// @param c
+
 func (e ContentCategory) Export(c *gin.Context) {
 	req := dto.ContentCategoryQueryReq{}
 	s := service.ContentCategory{}
