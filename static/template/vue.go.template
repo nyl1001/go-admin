@@ -214,7 +214,7 @@ export default {
       // 表单校验
       rules: {
         {{- range .SysGenColumns }}
-          {{- if eq .IsRequired "1" }}
+          {{- if eq .IsMust "1" }}
         {{.JsonField}}: [{ required: true, message: '{{.ColumnComment}}不能为空', trigger: 'blur' }],
           {{- end }}
         {{- end }}

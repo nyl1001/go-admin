@@ -34,7 +34,8 @@
               icon="el-icon-upload"
               size="mini"
               @click="openImportTable"
-            >导入数据库表</el-button>
+            >导入数据库表
+            </el-button>
           </el-col>
         </el-row>
         <el-table v-loading="loading" stripe border :data="tableList">
@@ -59,13 +60,15 @@
                 size="small"
                 icon="el-icon-edit"
                 @click="handleEditTable(scope.row)"
-              >编辑</el-button>
+              >编辑
+              </el-button>
               <el-button
                 type="text"
                 size="small"
                 icon="el-icon-view"
                 @click="handlePreview(scope.row)"
-              >预览</el-button>
+              >预览
+              </el-button>
               <el-button
                 v-permisaction="['sys:table:gen']"
                 size="mini"
@@ -123,28 +126,29 @@
             </el-tag>
           </div>
           <div id="codemirror">
-            <codemirror ref="cmEditor" :value="codestr" :options="cmOptions" />
+            <codemirror ref="cmEditor" :value="codestr" :options="cmOptions"/>
           </div>
         </div>
-
+        <div class="button-container">
+          <el-button icon="el-icon-copy" size="mini" @click="copyToClipboard">复制到剪切板</el-button>
+        </div>
       </el-dialog>
-      <import-table ref="importTB" @ok="handleQuery" />
+      <import-table ref="importTB" @ok="handleQuery"/>
     </template>
   </BasicLayout>
 </template>
 
 <script>
-import { listTable, previewTable, delTable, genCode, downloadCode, genDB } from '@/api/sys/tools/table'
+import { delTable, downloadCode, genCode, genDB, listTable, previewTable } from '@/api/sys/tools/table'
 import importTable from './importTable.vue'
 import { codemirror } from 'vue-codemirror'
 import 'codemirror/theme/material-palenight.css'
-
-require('codemirror/mode/javascript/javascript')
-
 import 'codemirror/mode/javascript/javascript'
 import 'codemirror/mode/go/go'
 import 'codemirror/mode/vue/vue'
 import { resolveBlobNoHeader } from '@/utils/zipdownload'
+
+require('codemirror/mode/javascript/javascript')
 
 export default {
   name: 'SysGen',
@@ -209,6 +213,18 @@ export default {
         this.cmOptions.mode = 'text/x-vue'
       }
       this.codestr = item.content
+    },
+    copyToClipboard() {
+      // 获取 codemirror 内容
+      const codeContent = this.codestr
+      // 复制到剪贴板
+      navigator.clipboard.writeText(codeContent)
+        .then(() => {
+          this.msgSuccess('已复制到剪切板!')
+        })
+        .catch(err => {
+          this.msgError('Failed to copy text: ' + err)
+        })
     },
     /** 搜索按钮操作 */
     handleQuery() {
@@ -344,14 +360,22 @@ export default {
 </style>
 
 <style lang="scss">
-  #codemirror {
-      height: auto;
-      margin: 0;
-      overflow: auto;
-    }
-  .CodeMirror {
-      overflow:auto;
-      border: 1px solid #eee;
-      height: 600px;
-    }
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+#codemirror {
+  height: auto;
+  margin: 0;
+  overflow: auto;
+}
+
+.CodeMirror {
+  overflow: auto;
+  border: 1px solid #eee;
+  height: 600px;
+}
 </style>

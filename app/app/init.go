@@ -5,7 +5,8 @@ package app
  */
 import (
 	appLang "go-admin/app/app/user/lang"
-	appRouter "go-admin/app/app/user/router"
+	appUserRouter "go-admin/app/app/user/router"
+	appCompanyRouter "go-admin/app/app/vehicle_rent/router"
 )
 
 // AllRouter
@@ -16,7 +17,7 @@ func AllRouter() []func() {
 	var routers []func()
 
 	//app-用户管理
-	routers = append(routers, appRouter.InitRouter)
+	routers = append(routers, appUserRouter.InitRouter, appCompanyRouter.InitRouter)
 	return routers
 }
 

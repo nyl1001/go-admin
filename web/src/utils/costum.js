@@ -73,14 +73,22 @@ export function selectDictLabel(datas, value) {
   return actions.join('')
 }
 
-export function selectItemsLabel(datas, value) {
+export function selectItemsLabel(datas, labelKey, valueKey, selectValue) {
+  console.log('datas', datas)
+  console.log('selectValue', selectValue)
   var actions = []
-  Object.keys(datas).map((key) => {
-    if (datas[key].key === ('' + value)) {
-      actions.push(datas[key].value)
+  datas.forEach(item => {
+    if (item[valueKey] === selectValue) {
+      actions.push(item[labelKey])
       return false
     }
   })
+  // Object.keys(datas).map((key) => {
+  //   if (datas[key][valueKey] === ('' + selectValue)) {
+  //     actions.push(datas[key][labelKey])
+  //     return false
+  //   }
+  // })
   return actions.join('')
 }
 
