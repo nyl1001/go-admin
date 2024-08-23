@@ -215,16 +215,30 @@ export default {
       this.codestr = item.content
     },
     copyToClipboard() {
-      // 获取 codemirror 内容
       const codeContent = this.codestr
-      // 复制到剪贴板
-      navigator.clipboard.writeText(codeContent)
-        .then(() => {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(codeContent)
+          .then(() => {
+            this.msgSuccess('已复制到剪切板!')
+          })
+          .catch(err => {
+            this.msgError('复制失败: ' + err)
+          })
+      } else {
+        // Fallback method for older browsers
+        const textArea = document.createElement('textarea')
+        textArea.value = codeContent
+        document.body.appendChild(textArea)
+        textArea.focus()
+        textArea.select()
+        try {
+          document.execCommand('copy')
           this.msgSuccess('已复制到剪切板!')
-        })
-        .catch(err => {
-          this.msgError('Failed to copy text: ' + err)
-        })
+        } catch (err) {
+          this.msgError('复制失败: ' + err)
+        }
+        document.body.removeChild(textArea)
+      }
     },
     /** 搜索按钮操作 */
     handleQuery() {

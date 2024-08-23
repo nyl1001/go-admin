@@ -53,6 +53,23 @@ func (e *Brand) GetPage(c *dto.BrandQueryReq, p *middleware.DataPermission) ([]m
 	return list, count, lang.SuccessCode, nil
 }
 
+// @return []models.Brand
+// @return int64
+// @return int
+// @return error
+func (e *Brand) GetAll(p *middleware.DataPermission) ([]models.Brand, int, error) {
+	var data models.Brand
+	var list []models.Brand
+	err := e.Orm.Order("created_at desc").Model(&data).
+		Scopes(
+			middleware.Permission(data.TableName(), p),
+		).Find(&list).Error
+	if err != nil {
+		return nil, lang.DataQueryLogCode, lang.MsgLogErrf(e.Log, e.Lang, lang.DataQueryCode, lang.DataQueryLogCode, err)
+	}
+	return list, lang.SuccessCode, nil
+}
+
 // Get
 // @Description: 获取Brand对象
 // @receiver e

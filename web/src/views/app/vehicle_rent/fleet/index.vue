@@ -154,11 +154,11 @@
 </template>
 
 <script>
-import {addFleet, delFleet, exportFleet, getFleet, listFleet, updateFleet} from '@/api/app/vehicle_rent/fleet'
-import {companyTreeSelect, getAllCompanies} from '@/api/app/vehicle_rent/company'
+import { addFleet, delFleet, exportFleet, getFleet, listFleet, updateFleet } from '@/api/app/vehicle_rent/fleet'
+import { companyTreeSelect, getAllCompanies } from '@/api/app/vehicle_rent/company'
 
-import {resolveBlob} from '@/utils/download'
-import {selectItemsLabel} from "@/utils/costum";
+import { resolveBlob } from '@/utils/download'
+import { selectItemsLabel } from '@/utils/costum'
 import Treeselect from '@riophae/vue-treeselect'
 import '@riophae/vue-treeselect/dist/vue-treeselect.css'
 
@@ -200,9 +200,7 @@ export default {
     }
   },
   created() {
-    getAllCompanies().then(response => {
-      this.companies = response.data
-    })
+    this.allCompanies()
     this.getList()
   },
   methods: {
@@ -215,11 +213,23 @@ export default {
         this.loading = false
       })
     },
+    allCompanies() {
+      getAllCompanies().then(response => {
+        this.companies = response.data
+        if (this.companies.length > 0) {
+          // 设置默认选中的品牌ID为列表中的第一个
+          // this.queryParams.companyId = this.companies[0].id
+        }
+      })
+    },
     /** 查询部门下拉树结构 */
     getCompanyTreeSelect() {
       companyTreeSelect().then(response => {
         this.companyOptions = response.data
       })
+    },
+    companyIdFormat(row) {
+      return selectItemsLabel(this.companies, 'companyName', 'id', row.companyId)
     },
     // 取消按钮
     cancel() {
@@ -235,9 +245,6 @@ export default {
         id: undefined,
       }
       this.resetForm('form')
-    },
-    companyIdFormat(row) {
-      return selectItemsLabel(this.companies, 'companyName', 'id', row.companyId)
     },
     // 搜索按钮操作
     handleQuery() {

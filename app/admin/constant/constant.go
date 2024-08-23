@@ -40,20 +40,65 @@ const (
 	VueName            = "index.vue"
 	LangName           = "lang.go"
 	ConstantName       = "constant.go"
+	TemplateNameKey    = "name"
+	TemplatePathKey    = "path"
 )
 
 // 模板相关
 var (
 	TemplatInfo = map[string]string{
-		RouterName:         "static/template/router.go.template",
-		BusinessRouterName: "static/template/business_router.go.template",
-		ApiName:            "static/template/apis.go.template",
 		ModelName:          "static/template/model.go.template",
 		DtoName:            "static/template/dto.go.template",
 		ServiceName:        "static/template/service.go.template",
+		ApiName:            "static/template/apis.go.template",
+		BusinessRouterName: "static/template/business_router.go.template",
 		JsName:             "static/template/js.go.template",
 		VueName:            "static/template/vue.go.template",
+		RouterName:         "static/template/router.go.template",
 		LangName:           "static/template/lang.go.template",
 		ConstantName:       "static/template/constant.go.template",
+	}
+
+	TemplateInfoList = []map[string]string{
+		{
+			TemplateNameKey: ModelName,
+			TemplatePathKey: "static/template/model.go.template",
+		},
+		{
+			TemplateNameKey: DtoName,
+			TemplatePathKey: "static/template/dto.go.template",
+		},
+		{
+			TemplateNameKey: ServiceName,
+			TemplatePathKey: "static/template/service.go.template",
+		},
+		{
+			TemplateNameKey: ApiName,
+			TemplatePathKey: "static/template/apis.go.template",
+		},
+		{
+			TemplateNameKey: BusinessRouterName,
+			TemplatePathKey: "static/template/business_router.go.template",
+		},
+		{
+			TemplateNameKey: JsName,
+			TemplatePathKey: "static/template/js.go.template",
+		},
+		{
+			TemplateNameKey: VueName,
+			TemplatePathKey: "static/template/vue.go.template",
+		},
+		{
+			TemplateNameKey: RouterName,
+			TemplatePathKey: "static/template/router.go.template",
+		},
+		{
+			TemplateNameKey: LangName,
+			TemplatePathKey: "static/template/lang.go.template",
+		},
+		{
+			TemplateNameKey: ConstantName,
+			TemplatePathKey: "static/template/constant.go.template",
+		},
 	}
 )

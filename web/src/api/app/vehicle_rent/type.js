@@ -9,6 +9,14 @@ export function listVehicleType(query) {
   })
 }
 
+// 查询所有
+export function getAllVehicleTypes() {
+  return request({
+    url: '/admin-api/v1/app/vehicle_rent/type/all',
+    method: 'get'
+  })
+}
+
 // 查询VehicleType详细
 export function getVehicleType(id) {
   return request({

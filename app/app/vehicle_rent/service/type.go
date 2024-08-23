@@ -53,6 +53,23 @@ func (e *VehicleType) GetPage(c *dto.VehicleTypeQueryReq, p *middleware.DataPerm
 	return list, count, lang.SuccessCode, nil
 }
 
+// @return []models.VehicleType
+// @return int64
+// @return int
+// @return error
+func (e *VehicleType) GetAll(p *middleware.DataPermission) ([]models.VehicleType, int, error) {
+	var data models.VehicleType
+	var list []models.VehicleType
+	err := e.Orm.Order("created_at desc").Model(&data).
+		Scopes(
+			middleware.Permission(data.TableName(), p),
+		).Find(&list).Error
+	if err != nil {
+		return nil, lang.DataQueryLogCode, lang.MsgLogErrf(e.Log, e.Lang, lang.DataQueryCode, lang.DataQueryLogCode, err)
+	}
+	return list, lang.SuccessCode, nil
+}
+
 // Get
 // @Description: 获取VehicleType对象
 // @receiver e

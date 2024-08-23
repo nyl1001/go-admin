@@ -74,6 +74,7 @@ CREATE TABLE vehicle_models
 (
     id          INT AUTO_INCREMENT PRIMARY KEY COMMENT '主键，自动递增',
     model_name  VARCHAR(100) NOT NULL COMMENT '车型名称',
+    description TEXT COMMENT '车型描述（可选）',
     brand_id    INT          NOT NULL COMMENT '关联的品牌ID (参考vehicle_brands表的主键)',
     type_id     INT          NOT NULL COMMENT '关联的车辆种类ID (参考vehicle_types表的主键)',
     `create_by` int      DEFAULT NULL COMMENT '创建者',
@@ -91,11 +92,14 @@ DROP TABLE IF EXISTS `pickup_locations`;
 CREATE TABLE pickup_locations
 (
     id             INT AUTO_INCREMENT PRIMARY KEY COMMENT '主键，自动递增',
-    company_id     INT          NOT NULL COMMENT '关联的公司ID (参考companies表的主键)',
-    location_name  VARCHAR(100) NOT NULL COMMENT '提车点名称',
+    company_id     INT            NOT NULL COMMENT '关联的公司ID (参考companies表的主键)',
+    location_name  VARCHAR(100)   NOT NULL COMMENT '提车点名称',
+    description    TEXT COMMENT '车型描述（可选）',
     address        VARCHAR(255) COMMENT '提车点地址',
     contact_number VARCHAR(20) COMMENT '提车点联系电话',
     manager_name   VARCHAR(100) COMMENT '提车点负责人',
+    latitude       DECIMAL(10, 7) NOT NULL COMMENT '提车点纬度',
+    longitude      DECIMAL(10, 7) NOT NULL COMMENT '提车点经度',
     `create_by`    int      DEFAULT NULL COMMENT '创建者',
     `update_by`    int      DEFAULT NULL COMMENT '更新者',
     created_at     DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
@@ -155,9 +159,9 @@ CREATE TABLE vehicle_photos
     FOREIGN KEY (vehicle_id) REFERENCES vehicles (id) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT '车辆图片表';
 
--- DROP TABLE IF EXISTS `vehicle_photos`;
--- DROP TABLE IF EXISTS `vehicles`;
--- DROP TABLE IF EXISTS `pickup_locations`;
+DROP TABLE IF EXISTS `vehicle_photos`;
+DROP TABLE IF EXISTS `vehicles`;
+DROP TABLE IF EXISTS `pickup_locations`;
 -- DROP TABLE IF EXISTS `vehicle_models`;
 -- DROP TABLE IF EXISTS `vehicle_brands`;
 -- DROP TABLE IF EXISTS `vehicle_types`;

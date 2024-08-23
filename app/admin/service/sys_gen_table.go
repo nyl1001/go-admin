@@ -410,8 +410,9 @@ func (e *SysGenTable) Preview(c dto.SysGenTableGenCodeReq, p *middleware.DataPer
 	}
 
 	var resp []dto.TemplateResp
-	for k, v := range constant.TemplatInfo {
-		tpl, _ := template.ParseFiles(v)
+	for _, mapVal := range constant.TemplateInfoList {
+		k := mapVal[constant.TemplateNameKey]
+		tpl, _ := template.ParseFiles(mapVal[constant.TemplatePathKey])
 		if err != nil {
 			return nil, sysLang.SysGenTemplateModelReadLogErrCode, lang.MsgLogErrf(e.Log, e.Lang, sysLang.SysGenTemplateModelReadErrCode, sysLang.SysGenTemplateModelReadLogErrCode, err)
 		}

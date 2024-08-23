@@ -44,10 +44,27 @@ func (e Brand) GetPage(c *gin.Context) {
 	e.PageOK(list, nil, count, req.GetPageIndex(), req.GetPageSize(), lang.MsgByCode(lang.SuccessCode, e.Lang))
 }
 
-//
+func (e Brand) GetAll(c *gin.Context) {
+	s := service.Brand{}
+	err := e.MakeContext(c).
+		MakeOrm().
+		MakeService(&s.Service).
+		Errors
+	if err != nil {
+		e.Error(lang.DataDecodeCode, lang.MsgLogErrf(e.Logger, e.Lang, lang.DataDecodeCode, lang.DataDecodeLogCode, err).Error())
+		return
+	}
+	p := middleware.GetPermissionFromContext(c)
+	list, respCode, err := s.GetAll(p)
+	if err != nil {
+		e.Error(respCode, err.Error())
+		return
+	}
+	e.OK(list, lang.MsgByCode(lang.SuccessCode, e.Lang))
+}
+
 // Get
 // @Description: 获取车辆品牌表
-
 func (e Brand) Get(c *gin.Context) {
 	req := dto.BrandGetReq{}
 	s := service.Brand{}

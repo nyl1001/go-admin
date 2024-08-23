@@ -9,6 +9,14 @@ export function listBrand(query) {
   })
 }
 
+// 查询所有
+export function getAllVehicleBrands() {
+  return request({
+    url: '/admin-api/v1/app/vehicle_rent/brand/all',
+    method: 'get'
+  })
+}
+
 // 查询Brand详细
 export function getBrand(id) {
   return request({

@@ -9,7 +9,7 @@ export function listCompanies(query) {
   })
 }
 
-// 查询Companies详细
+// 查询所有
 export function getAllCompanies() {
   return request({
     url: '/admin-api/v1/app/vehicle_rent/company/all',
