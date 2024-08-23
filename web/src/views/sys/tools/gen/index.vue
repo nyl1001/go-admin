@@ -119,7 +119,7 @@
         <div class="el-dialog-container">
           <div class="tag-group">
             <!-- eslint-disable-next-line vue/valid-v-for -->
-            <el-tag v-for="item in preview.data" :key="item.id" @click="codeChange(item)">
+            <el-tag v-for="item in preview.data" :key="item.id" :class="{'selected-tag': selectedTagName === item.name}" @click="codeChange(item)">
               <template>
                 {{ item.name }}
               </template>
@@ -181,6 +181,7 @@ export default {
         tableName: undefined,
         tableComment: undefined
       },
+      selectedTagName: undefined, // 用来存储当前选中的标签
       // 预览参数
       preview: {
         open: false,
@@ -203,6 +204,7 @@ export default {
       })
     },
     codeChange(item) {
+      this.selectedTagName = item.name // 更新选中的标签
       if (item.name.indexOf('js') > -1) {
         this.cmOptions.mode = 'text/javascript'
       }
@@ -392,4 +394,15 @@ export default {
   border: 1px solid #eee;
   height: 600px;
 }
+
+.tag-group {
+  display: flex;
+  gap: 10px;
+}
+
+.selected-tag {
+  background-color: #409EFF; /* 选中时的显眼背景色，可以根据需求调整 */
+  color: white;             /* 选中时的字体颜色 */
+}
+
 </style>
