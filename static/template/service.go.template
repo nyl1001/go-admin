@@ -266,16 +266,14 @@ func (e *{{.ClassName}}) GetExcel(list []models.{{.ClassName}}) ([]byte, error) 
 	no, _ := xlsx.NewSheet(sheetName)
 	_ = xlsx.SetColWidth(sheetName, "A", "L", 25)
 	_ = xlsx.SetSheetRow(sheetName, "A1", &[]interface{}{
-		"编号", "状态"})
-	dictService := adminService.NewSysDictDataService(&e.Service)
+	    {{- $first := true }}{{- range .SysGenColumns }}{{- if not $first }}, {{ end }}{{ $first = false }}"{{ .ColumnComment }}"{{ end }}})
+	// dictService := adminService.NewSysDictDataService(&e.Service)
 	for i, item := range list {
 		axis := fmt.Sprintf("A%d", i+2)
-		status := dictService.GetLabel("sys_status", item.Status)
-
-		//按标签对应输入数据
-		_ = xlsx.SetSheetRow(sheetName, axis, &[]interface{}{
-		    item.Id,status,
-		})
+        //按标签对应输入数据
+        _ = xlsx.SetSheetRow(sheetName, axis, &[]interface{}{
+            {{- $first := true }}{{- range .SysGenColumns }}{{- if not $first }}, {{ end }}{{ $first = false }}item.{{.GoField}}{{ end }},
+        })
 	}
 	xlsx.SetActiveSheet(no)
 	data, _ := xlsx.WriteToBuffer()

@@ -2,7 +2,6 @@ package service
 
 import (
 	"fmt"
-	adminService "go-admin/app/admin/service"
 	"go-admin/app/app/vehicle_rent/models"
 	"go-admin/app/app/vehicle_rent/service/dto"
 	cDto "go-admin/core/dto"
@@ -244,17 +243,12 @@ func (e *Fleet) GetExcel(list []models.Fleet) ([]byte, error) {
 	defer xlsx.Close()
 	no, _ := xlsx.NewSheet(sheetName)
 	_ = xlsx.SetColWidth(sheetName, "A", "L", 25)
-	_ = xlsx.SetSheetRow(sheetName, "A1", &[]interface{}{
-		"编号", "状态"})
-	dictService := adminService.NewSysDictDataService(&e.Service)
+	_ = xlsx.SetSheetRow(sheetName, "A1", &[]interface{}{"关联的公司ID (参考companies表的主键)", "联系电话", "创建者", "创建时间", "车队描述（可选）", "负责人邮箱", "车队名称", "主键，自动递增", "负责人", "更新者", "更新时间"})
+	// dictService := adminService.NewSysDictDataService(&e.Service)
 	for i, item := range list {
 		axis := fmt.Sprintf("A%d", i+2)
-		status := dictService.GetLabel("fleet_name", item.FleetName)
-
 		//按标签对应输入数据
-		_ = xlsx.SetSheetRow(sheetName, axis, &[]interface{}{
-			item.Id, status,
-		})
+		_ = xlsx.SetSheetRow(sheetName, axis, &[]interface{}{item.CompanyId, item.ContactNumber, item.CreateBy, item.CreatedAt, item.Description, item.Email, item.FleetName, item.Id, item.ManagerName, item.UpdateBy, item.UpdatedAt})
 	}
 	xlsx.SetActiveSheet(no)
 	data, _ := xlsx.WriteToBuffer()
