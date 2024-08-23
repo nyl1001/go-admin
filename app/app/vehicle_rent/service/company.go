@@ -2,7 +2,6 @@ package service
 
 import (
 	"fmt"
-	adminService "go-admin/app/admin/service"
 	"go-admin/app/app/vehicle_rent/models"
 	"go-admin/app/app/vehicle_rent/service/dto"
 	cDto "go-admin/core/dto"
@@ -254,28 +253,23 @@ func (e *Companies) Remove(ids []int64, p *middleware.DataPermission) (int, erro
 }
 
 // GetExcel
-// @Description: GetExcel 导出Companies excel数据
+// @Description: GetExcel 导出Company excel数据
 // @receiver e
 // @return []byte
 // @return int
 // @return error
 func (e *Companies) GetExcel(list []models.Companies) ([]byte, error) {
-	sheetName := "Companies"
+	sheetName := "Company"
 	xlsx := excelize.NewFile()
 	defer xlsx.Close()
 	no, _ := xlsx.NewSheet(sheetName)
 	_ = xlsx.SetColWidth(sheetName, "A", "L", 25)
-	_ = xlsx.SetSheetRow(sheetName, "A1", &[]interface{}{
-		"编号", "状态"})
-	dictService := adminService.NewSysDictDataService(&e.Service)
+	_ = xlsx.SetSheetRow(sheetName, "A1", &[]interface{}{"公司地址", "公司名称", "联系电话", "创建者", "创建时间", "公司描述（可选）", "公司邮箱", "主键，自动递增", "父公司ID (NULL表示顶级公司)", "更新者", "更新时间"})
+	// dictService := adminService.NewSysDictDataService(&e.Service)
 	for i, item := range list {
 		axis := fmt.Sprintf("A%d", i+2)
-		status := dictService.GetLabel("company_name", item.CompanyName)
-
 		//按标签对应输入数据
-		_ = xlsx.SetSheetRow(sheetName, axis, &[]interface{}{
-			item.Id, status,
-		})
+		_ = xlsx.SetSheetRow(sheetName, axis, &[]interface{}{item.Address, item.CompanyName, item.ContactNumber, item.CreateBy, item.CreatedAt, item.Description, item.Email, item.Id, item.ParentCompanyId, item.UpdateBy, item.UpdatedAt})
 	}
 	xlsx.SetActiveSheet(no)
 	data, _ := xlsx.WriteToBuffer()
